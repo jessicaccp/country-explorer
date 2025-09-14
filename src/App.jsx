@@ -1,7 +1,11 @@
+import AppRoutes from './router'
+
 function App () {
   return (
     <>
-      <div className='h-screen w-screen'>Em construção.</div>
+      <main className='h-screen w-screen'>
+        <AppRoutes />
+      </main>
     </>
   )
 }
