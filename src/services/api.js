@@ -9,7 +9,7 @@ const apiClient = axios.create({
 
 export const fetchAllCountries = async () => {
     try {
-        const response = await apiClient.get("/all")
+        const response = await apiClient.get("/all?fields=name,region")
         return response.data
     } catch (error) {
         console.log("Error fetching all countries:", error)
