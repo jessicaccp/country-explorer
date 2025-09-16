@@ -1,5 +1,4 @@
 import ErrorPage from '@/components/ErrorPage'
-import LoadingPage from '@/components/LoadingPage'
 import { useCountries } from '@/hooks/useCountries'
 import { usePagination } from '@/hooks/usePagination'
 import CountryGrid from '@/pages/HomePage/components/CountryGrid'
@@ -37,7 +36,6 @@ const HomePage = () => {
     siblingCount: 1
   })
 
-  if (loading) return <LoadingPage />
   if (error) return <ErrorPage />
 
   const noResultsFound = !loading && processedCountries.length === 0
@@ -67,7 +65,11 @@ const HomePage = () => {
           </div>
         ) : (
           <>
-            <CountryGrid countries={displayedCountries} />
+            <CountryGrid
+              countries={displayedCountries}
+              isLoading={loading}
+              itemsPerPage={itemsPerPage}
+            />
             <HomePagination
               paginationRange={paginationRange}
               currentPage={currentPage}

@@ -44,7 +44,7 @@ const CountryCard = ({ country }) => {
                 <span>{country.region}</span>
               </div>
             </CardDescription>
-            <div className='mt-4 text-sm text-gray-700 dark:text-gray-300'>
+            <div className='mt-4 text-sm text-neutral-700 dark:text-neutral-300'>
               <DynamicFact country={country} />
             </div>
           </CardContent>
