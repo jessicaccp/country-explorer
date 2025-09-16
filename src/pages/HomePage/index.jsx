@@ -1,7 +1,5 @@
-import CountryCard from '@/components/CountryCard'
-import Error from '@/components/Error'
-import FilterControls from '@/components/FilterControls'
-import Loading from '@/components/Loading'
+import ErrorPage from '@/components/ErrorPage'
+import LoadingPage from '@/components/LoadingPage'
 import {
   Pagination,
   PaginationContent,
@@ -12,6 +10,8 @@ import {
   PaginationPrevious
 } from '@/components/ui/pagination'
 import { DOTS, usePagination } from '@/hooks/usePagination'
+import CountryCard from '@/pages/HomePage/components/CountryCard'
+import FilterControls from '@/pages/HomePage/components/FilterControls'
 import { fetchAllCountries } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
@@ -28,6 +28,11 @@ const HomePage = () => {
   const [sortOrder, setSortOrder] = useState('name-asc')
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(12)
+
+  const handleItemsPerPageChange = newSize => {
+    setItemsPerPage(newSize)
+    setCurrentPage(1)
+  }
 
   useEffect(() => {
     const getAllCountriesData = async () => {
@@ -70,6 +75,17 @@ const HomePage = () => {
           return b.population - a.population
         case 'pop-asc':
           return a.population - b.population
+        case 'area-desc':
+          return (b.area || 0) - (a.area || 0)
+        case 'area-asc':
+          return (a.area || 0) - (b.area || 0)
+        case 'region-asc': {
+          const regionCompare = (a.region || '').localeCompare(b.region || '')
+          if (regionCompare !== 0) {
+            return regionCompare
+          }
+          return a.name.common.localeCompare(b.name.common)
+        }
         default:
           return 0
       }
@@ -97,8 +113,8 @@ const HomePage = () => {
 
   console.log(displayedCountries)
 
-  if (loading) return <Loading />
-  if (error) return <Error error={'Failed to search data.'} />
+  if (loading) return <LoadingPage />
+  if (error) return <ErrorPage />
 
   return (
     <>
@@ -109,9 +125,11 @@ const HomePage = () => {
             searchTerm={searchTerm}
             selectedRegion={selectedRegion}
             sortOrder={sortOrder}
+            itemsPerPage={itemsPerPage}
             onSearchChange={setSearchTerm}
             onRegionChange={setSelectedRegion}
             onSortChange={setSortOrder}
+            onItemsPerPageChange={handleItemsPerPageChange}
           />
         </section>
 

@@ -1,12 +1,12 @@
+import DynamicFact from '@/pages/HomePage/components/DynamicFact'
 import { Link } from 'react-router-dom'
-import DynamicFact from './DynamicFact'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from './ui/card'
+} from '../../../components/ui/card'
 
 const CountryCard = ({ country }) => {
   const capital = country.capital?.[0] || 'N/A'
@@ -19,6 +19,7 @@ const CountryCard = ({ country }) => {
             <img
               src={country.flags.svg}
               alt={`Flag of ${country.name.common}`}
+              title={`Flag of ${country.name.common}`}
               className='w-full h-30 object-cover'
             />
           </CardHeader>
