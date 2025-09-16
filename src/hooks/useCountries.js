@@ -1,6 +1,7 @@
 import { fetchAllCountries } from "@/services/api";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
+import { useSearchParams } from "react-router-dom";
 
 /**
  * @hook
@@ -26,17 +27,28 @@ import { useDebounce } from "use-debounce";
  * const { loading, displayedCountries, setSearchTerm } = useCountries();
  */
 export const useCountries = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [allCountries, setAllCountries] = useState([]);
   const [processedCountries, setProcessedCountries] = useState([]);
   const [displayedCountries, setDisplayedCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(
+    searchParams.get("search") || ""
+  );
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
-  const [selectedRegion, setSelectedRegion] = useState("all");
-  const [sortOrder, setSortOrder] = useState("name-asc");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(12);
+  const [selectedRegion, setSelectedRegion] = useState(
+    searchParams.get("region") || "all"
+  );
+  const [sortOrder, setSortOrder] = useState(
+    searchParams.get("sort") || "name-asc"
+  );
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get("page")) || 1
+  );
+  const [itemsPerPage, setItemsPerPage] = useState(
+    Number(searchParams.get("limit")) || 12
+  );
 
   const handleItemsPerPageChange = (newSize) => {
     setItemsPerPage(newSize);
@@ -115,6 +127,26 @@ export const useCountries = () => {
     );
     setDisplayedCountries(currentItems);
   }, [processedCountries, currentPage, itemsPerPage]);
+
+  useEffect(() => {
+    const params = {};
+
+    if (debouncedSearchTerm) params.search = debouncedSearchTerm;
+    if (selectedRegion && selectedRegion !== "all")
+      params.region = selectedRegion;
+    if (sortOrder !== "name-asc") params.sort = sortOrder;
+    if (itemsPerPage !== 12) params.limit = itemsPerPage;
+    if (currentPage > 1) params.page = currentPage;
+
+    setSearchParams(params, { replace: true });
+  }, [
+    debouncedSearchTerm,
+    selectedRegion,
+    sortOrder,
+    itemsPerPage,
+    currentPage,
+    setSearchParams,
+  ]);
 
   return {
     loading,
