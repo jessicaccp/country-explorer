@@ -1,5 +1,10 @@
+/**
+ * @file A catalog of stateless React components, each designed to render a unique "fun fact" about a country.
+ * This array is consumed by the DynamicFact component to pseudo-randomly display one fact per card.
+ * @type {Array<({country: object}) => JSX.Element>}
+ */
 export const factTemplates = [
-  // Population and area
+  // 1. Population and area
   ({ country }) => {
     const population = country.population?.toLocaleString('en-US')
     const area = country.area?.toLocaleString('en-US')
@@ -11,7 +16,7 @@ export const factTemplates = [
     )
   },
 
-  // Capital and language
+  // 2. Capital and language
   ({ country }) => {
     const capital = country.capital?.[0] ?? 'N/A'
     const language = Object.values(country.languages ?? {})[0] ?? 'N/A'
@@ -23,7 +28,7 @@ export const factTemplates = [
     )
   },
 
-  // Region and subregion
+  // 3. Region and subregion
   ({ country }) => {
     const region = country.region ?? 'N/A'
     const subregion = country.subregion ?? 'the same region'
@@ -35,7 +40,7 @@ export const factTemplates = [
     )
   },
 
-  // Border count and currency
+  // 4. Border count and currency
   ({ country }) => {
     const borderCount = country.borders?.length || 0
     const currency = Object.values(country.currencies ?? {})[0]?.name ?? 'N/A'
@@ -47,7 +52,7 @@ export const factTemplates = [
     )
   },
 
-  // Official name and population
+  // 5. Official name and population
   ({ country }) => {
     const officialName = country.name.official ?? country.name.common
     const population = country.population?.toLocaleString('en-US')
@@ -59,7 +64,7 @@ export const factTemplates = [
     )
   },
 
-  // Area and capital
+  // 6. Area and capital
   ({ country }) => {
     const area = country.area?.toLocaleString('en-US')
     const capital = country.capital?.[0] ?? 'N/A'
@@ -71,7 +76,7 @@ export const factTemplates = [
     )
   },
 
-  // Language and currency
+  // 7. Language and currency
   ({ country }) => {
     const language = Object.values(country.languages ?? {})[0] ?? 'N/A'
     const currency = Object.values(country.currencies ?? {})[0]?.name ?? 'N/A'
@@ -83,7 +88,7 @@ export const factTemplates = [
     )
   },
 
-  // Region and border count
+  // 8. Region and border count
   ({ country }) => {
     const region = country.region ?? 'N/A'
     const borderCount = country.borders?.length || 0
@@ -95,7 +100,7 @@ export const factTemplates = [
     )
   },
 
-  // Density
+  // 9. Density
   ({ country }) => {
     const density =
       country.population && country.area
@@ -109,7 +114,7 @@ export const factTemplates = [
     )
   },
 
-  // Capital and currency
+  // 10. Capital and currency
   ({ country }) => {
     const capital = country.capital?.[0] ?? 'N/A'
     const currency = Object.values(country.currencies ?? {})[0]?.name ?? 'N/A'

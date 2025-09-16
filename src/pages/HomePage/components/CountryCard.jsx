@@ -1,13 +1,19 @@
-import DynamicFact from '@/pages/HomePage/components/DynamicFact'
-import { Link } from 'react-router-dom'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '../../../components/ui/card'
+} from '@/components/ui/card'
+import DynamicFact from '@/pages/HomePage/components/DynamicFact'
+import { Link } from 'react-router-dom'
 
+/**
+ * @description Displays a summary of a single country's information in a card format.
+ * Includes the flag, name, key details, and a dynamic "fun fact". The card is a link to the country's detail page.
+ * @param {object} props - The component's props.
+ * @param {object} props.country - The country object from the API.
+ */
 const CountryCard = ({ country }) => {
   const capital = country.capital?.[0] || 'N/A'
 

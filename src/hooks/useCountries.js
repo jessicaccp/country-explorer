@@ -2,6 +2,29 @@ import { fetchAllCountries } from "@/services/api";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
+/**
+ * @hook
+ * @description A comprehensive hook that encapsulates all logic for fetching, filtering, sorting, and paginating the country data.
+ *
+ * @returns {object} An object containing all the necessary state and handlers for the UI.
+ * - `loading` {boolean}: True if the initial country data is being fetched.
+ * - `error` {boolean}: True if an error occurred during the fetch.
+ * - `displayedCountries` {object[]}: The final, paginated array of countries to be rendered.
+ * - `processedCountries` {object[]}: The full list of countries after filtering and sorting (pre-pagination).
+ * - `searchTerm` {string}: The current value of the search input.
+ * - `selectedRegion` {string}: The currently selected region for filtering.
+ * - `sortOrder` {string}: The current sort order value.
+ * - `itemsPerPage` {number}: The number of items to display per page.
+ * - `currentPage` {number}: The current active page.
+ * - `setSearchTerm` {Function}: State setter for the search term.
+ * - `setSelectedRegion` {Function}: State setter for the selected region.
+ * - `setSortOrder` {Function}: State setter for the sort order.
+ * - `handleItemsPerPageChange` {Function}: Handler to change items per page and reset to page 1.
+ * - `setCurrentPage` {Function}: State setter for the current page.
+ *
+ * @example
+ * const { loading, displayedCountries, setSearchTerm } = useCountries();
+ */
 export const useCountries = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

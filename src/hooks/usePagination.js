@@ -1,27 +1,27 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 const range = (start, end) => {
   let length = end - start + 1;
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
-export const DOTS = '...';
+export const DOTS = "...";
 
 /**
- * A custom React hook that generates a pagination range array with ellipses.
- * It's designed to be used in pagination components to create a smart navigation UI.
- * 
- * @param {object} props - The pagination configuration object.
- * @param {number} props.totalItems - The total number of items to be paginated.
- * @param {number} props.itemsPerPage - The maximum number of items displayed per page.
- * @param {number} props.currentPage - The current active page, starting from 1.
- * @param {number} [props.siblingCount=1] - The number of page numbers to show on each side of the current page. Defaults to 1.
- * 
- * @returns {(number|string)[]} An array of page numbers and ellipses ('...') representing the pagination range.
- * 
+ * @hook
+ * @description A custom React hook that calculates and returns a smart pagination range with ellipses.
+ *
+ * @param {object} config - The pagination configuration object.
+ * @param {number} config.totalItems - The total number of items to be paginated.
+ * @param {number} config.itemsPerPage - The maximum number of items displayed per page.
+ * @param {number} config.currentPage - The current active page (1-indexed).
+ * @param {number} [config.siblingCount=1] - The number of page links to show on each side of the current page. Defaults to 1.
+ *
+ * @returns {(number|string)[]} An array of page numbers and the `DOTS` string ('...') to be rendered in the UI.
+ *
  * @example
- * const range = usePagination({ totalItems: 100, itemsPerPage: 10, currentPage: 5, siblingCount: 1 });
- * // returns [1, '...', 4, 5, 6, '...', 10]
+ * const range = usePagination({ totalItems: 100, itemsPerPage: 10, currentPage: 5 });
+ * // Returns: [1, '...', 4, 5, 6, '...', 10]
  */
 export const usePagination = ({
   totalItems,

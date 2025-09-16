@@ -9,6 +9,19 @@ import {
   SelectValue
 } from '@/components/ui/select'
 
+/**
+ * @description Renders a set of controls for searching, filtering, and sorting the list of countries.
+ * This is a controlled component where all state is managed by a parent component.
+ * @param {object} props - The component's props.
+ * @param {string} props.searchTerm - The current value of the search input.
+ * @param {string} props.selectedRegion - The current value of the region select.
+ * @param {string} props.sortOrder - The current value of the sort order select.
+ * @param {number} props.itemsPerPage - The current value of the items per page select.
+ * @param {Function} props.onSearchChange - Callback function to update the search term.
+ * @param {Function} props.onRegionChange - Callback function to update the selected region.
+ * @param {Function} props.onSortChange - Callback function to update the sort order.
+ * @param {Function} props.onItemsPerPageChange - Callback function to update the items per page.
+ */
 const FilterControls = ({
   searchTerm,
   selectedRegion,

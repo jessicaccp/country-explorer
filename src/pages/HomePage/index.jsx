@@ -2,10 +2,15 @@ import ErrorPage from '@/components/ErrorPage'
 import LoadingPage from '@/components/LoadingPage'
 import { useCountries } from '@/hooks/useCountries'
 import { usePagination } from '@/hooks/usePagination'
+import CountryGrid from '@/pages/HomePage/components/CountryGrid'
 import FilterControls from '@/pages/HomePage/components/FilterControls'
-import CountryGrid from './components/CountryGrid'
-import HomePagination from './components/HomePagination'
+import HomePagination from '@/pages/HomePage/components/HomePagination'
 
+/**
+ * @description Renders the main Home Page.
+ * This component acts as a container that orchestrates the `useCountries` hook
+ * with its presentational children components to build the complete user interface.
+ */
 const HomePage = () => {
   const {
     loading,

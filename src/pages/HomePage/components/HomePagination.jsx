@@ -9,6 +9,15 @@ import {
 } from '@/components/ui/pagination'
 import { DOTS } from '@/hooks/usePagination'
 
+/**
+ * @description Renders the main pagination controls for the application.
+ * It uses the `usePagination` hook's output to build an intelligent pagination UI with ellipses.
+ * @param {object} props - The component's props.
+ * @param {(number|string)[]} props.paginationRange - The array of pages and dots from the `usePagination` hook.
+ * @param {number} props.currentPage - The current active page.
+ * @param {number} props.totalPages - The total number of pages.
+ * @param {Function} props.setCurrentPage - Callback function to set the current page.
+ */
 const HomePagination = ({
   paginationRange,
   currentPage,
