@@ -33,7 +33,7 @@ export const useCountries = () => {
   const [displayedCountries, setDisplayedCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
-  const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("all");
   const [sortOrder, setSortOrder] = useState("name-asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(12);

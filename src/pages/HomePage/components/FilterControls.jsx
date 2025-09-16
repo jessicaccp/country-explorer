@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
+import { X } from 'lucide-react'
 
 /**
  * @description Renders a set of controls for searching, filtering, and sorting the list of countries.
@@ -35,13 +36,26 @@ const FilterControls = ({
   return (
     <>
       <section className='flex flex-col sm:flex-row sm:flex-wrap md:flex-nowrap w-full gap-2'>
-        <Input
-          type='search'
-          placeholder='Search for a country...'
-          value={searchTerm}
-          onChange={e => onSearchChange(e.target.value)}
-          className='w-full md:basis-1/2 grow bg-card shadow-xs text-sm'
-        />
+        <div className='relative w-full md:basis-1/2 grow'>
+          <Input
+            type='search'
+            placeholder='Search for a country...'
+            value={searchTerm}
+            onChange={e => onSearchChange(e.target.value)}
+            className='w-full md:basis-1/2 grow bg-card shadow-xs text-sm pr-10'
+          />
+
+          {searchTerm && (
+            <button
+              type='button'
+              aria-label='Clear search'
+              onClick={() => onSearchChange('')}
+              className='absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground'
+            >
+              <X className='h-4 w-4' />
+            </button>
+          )}
+        </div>
 
         <Select value={selectedRegion} onValueChange={onRegionChange}>
           <SelectTrigger className='w-full sm:basis-1/4 md:basis-1/6 xl:basis-1/8 2xl:basis-1/10 3xl:basis-1/12 grow bg-card shadow-xs'>
