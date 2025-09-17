@@ -27,3 +27,13 @@ export const fetchCountryByName = async (name) => {
   const response = await apiClient.get(`/name/${name}`);
   return response.data;
 };
+
+/**
+ * @description Fetches a single country by its official cca3, cca2, or cioc code.
+ * @param {string} code - The code of the country.
+ * @returns {Promise<object[]>} A promise that resolves to the country data.
+ */
+export const fetchCountryByCode = async (code) => {
+  const response = await apiClient.get(`/alpha/${code}`);
+  return response.data;
+};
