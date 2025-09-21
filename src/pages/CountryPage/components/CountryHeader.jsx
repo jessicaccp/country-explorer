@@ -1,6 +1,6 @@
 const CountryHeader = ({ flagUrl, flagAlt, commonName, officialName }) => {
   return (
-    <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-8 mb-12'>
+    <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-8'>
       <img
         src={flagUrl}
         alt={flagAlt}

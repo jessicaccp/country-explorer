@@ -34,9 +34,7 @@ const CountryCard = ({ country }) => {
             <hr className='my-2'></hr>
             <CardDescription>
               {country.name.official && (
-                <span className='text-neutral-950'>
-                  {country.name.official}
-                </span>
+                <span className='text-foreground'>{country.name.official}</span>
               )}
               <div className='flex flex-row flex-wrap'>
                 <span>{capital}</span>
@@ -44,7 +42,7 @@ const CountryCard = ({ country }) => {
                 <span>{country.region}</span>
               </div>
             </CardDescription>
-            <div className='mt-4 text-sm text-neutral-700 dark:text-neutral-300'>
+            <div className='mt-4 text-sm text-muted-foreground'>
               <DynamicFact country={country} />
             </div>
           </CardContent>

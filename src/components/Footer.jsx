@@ -8,7 +8,7 @@ const Footer = () => {
             href='https://github.com/jessicaccp'
             target='_blank'
             rel='noopener noreferrer'
-            className='font-semibold text-sky-600 dark:text-sky-400 hover:underline'
+            className='font-semibold text-primary hover:underline'
           >
             Jessica Patricio
           </a>
@@ -17,7 +17,7 @@ const Footer = () => {
             href='https://restcountries.com/'
             target='_blank'
             rel='noopener noreferrer'
-            className='font-semibold text-sky-600 dark:text-sky-400 hover:underline'
+            className='font-semibold text-primary hover:underline'
           >
             REST Countries API
           </a>
