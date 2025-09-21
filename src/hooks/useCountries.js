@@ -158,6 +158,13 @@ export const useCountries = () => {
     setSearchParams,
   ]);
 
+  const resetFilters = () => {
+    setSearchTerm('');
+    setSelectedRegion('all');
+    setSortOrder('name-asc');
+    handleItemsPerPageChange(12);
+};
+
   return {
     loading,
     error,
@@ -173,5 +180,6 @@ export const useCountries = () => {
     setSortOrder,
     handleItemsPerPageChange,
     setCurrentPage,
+    resetFilters,
   };
 };

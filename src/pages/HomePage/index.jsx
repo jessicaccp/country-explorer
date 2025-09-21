@@ -1,9 +1,11 @@
 import ErrorPage from '@/components/ErrorPage'
+import { Button } from '@/components/ui/button'
 import { useCountries } from '@/hooks/useCountries'
 import { usePagination } from '@/hooks/usePagination'
 import CountryGrid from '@/pages/HomePage/components/CountryGrid'
 import FilterControls from '@/pages/HomePage/components/FilterControls'
 import HomePagination from '@/pages/HomePage/components/HomePagination'
+import { SearchX } from 'lucide-react'
 
 /**
  * @description Renders the main Home Page.
@@ -25,7 +27,8 @@ const HomePage = () => {
     setSelectedRegion,
     setSortOrder,
     handleItemsPerPageChange,
-    setCurrentPage
+    setCurrentPage,
+    resetFilters
   } = useCountries()
 
   const totalPages = Math.ceil(processedCountries.length / itemsPerPage)
@@ -55,13 +58,20 @@ const HomePage = () => {
         />
 
         {noResultsFound ? (
-          <div className='grow flex flex-col items-center justify-center text-center'>
-            <p className='text-xl font-semibold text-muted-foreground'>
-              No countries found.
-            </p>
-            <p className='text-muted-foreground'>
-              Try adjusting your search or filters.
-            </p>
+          <div className='grow flex flex-col items-center justify-center text-center gap-4 animate-fade'>
+            <SearchX className='h-16 w-16 text-muted-foreground/50' />
+            <div>
+              <p className='text-xl font-semibold text-foreground'>
+                No countries found
+              </p>
+              <p className='text-muted-foreground'>
+                Try adjusting your search or filters, or clear them to start
+                over.
+              </p>
+            </div>
+            <Button variant='outline' onClick={resetFilters}>
+              Clear Filters
+            </Button>
           </div>
         ) : (
           <>

@@ -8,7 +8,7 @@ import CountryCardSkeleton from '@/pages/HomePage/components/CountryCardSkeleton
  */
 const CountryGrid = ({ countries, isLoading, itemsPerPage }) => {
   return (
-    <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8'>
+    <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8 animate-fade'>
       {isLoading
         ? Array.from({ length: itemsPerPage }).map((_, index) => (
             <CountryCardSkeleton key={index} />

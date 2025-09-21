@@ -7,10 +7,11 @@ const ThemeToggle = () => {
 
   return (
     <Button
-      variant='ghost'
+      variant='outline'
       size='icon'
       onClick={toggleTheme}
       aria-label='Toggle theme'
+      title='Toggle theme'
     >
       {theme === 'light' ? (
         <Moon className='h-5 w-5' />

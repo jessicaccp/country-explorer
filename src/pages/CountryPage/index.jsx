@@ -19,7 +19,7 @@ const CountryPage = () => {
   if (error || !countryData) return <ErrorPage message='Country not found.' />
 
   return (
-    <div className='animate-fade-in'>
+    <div className='animate-fade'>
       <Button asChild variant='outline' className='mb-12 shadow-md'>
         <Link to='/'>
           <ArrowLeft className='mr-2 h-4 w-4' /> Back to Home

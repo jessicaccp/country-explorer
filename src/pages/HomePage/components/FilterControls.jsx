@@ -35,14 +35,14 @@ const FilterControls = ({
 }) => {
   return (
     <>
-      <section className='flex flex-col sm:flex-row sm:flex-wrap md:flex-nowrap w-full gap-2'>
-        <div className='relative w-full md:basis-1/2 grow'>
+      <section className='flex flex-col sm:flex-row w-full gap-2'>
+        <div className='relative w-full'>
           <Input
             type='search'
             placeholder='Search for a country...'
             value={searchTerm}
             onChange={e => onSearchChange(e.target.value)}
-            className='w-full md:basis-1/2 grow bg-card shadow-xs text-sm pr-10'
+            className='w-full bg-card shadow-xs text-sm pr-10'
           />
 
           {searchTerm && (
@@ -58,7 +58,7 @@ const FilterControls = ({
         </div>
 
         <Select value={selectedRegion} onValueChange={onRegionChange}>
-          <SelectTrigger className='w-full sm:basis-1/4 md:basis-1/6 xl:basis-1/8 2xl:basis-1/10 3xl:basis-1/12 grow bg-card shadow-xs'>
+          <SelectTrigger className='w-full sm:w-auto bg-card shadow-xs'>
             <SelectValue placeholder='Filter by Region' />
           </SelectTrigger>
           <SelectContent>
@@ -75,7 +75,7 @@ const FilterControls = ({
         </Select>
 
         <Select value={sortOrder} onValueChange={onSortChange}>
-          <SelectTrigger className='w-full sm:basis-1/4 md:basis-1/6 xl:basis-1/8 2xl:basis-1/10 3xl:basis-1/12 grow bg-card shadow-xs'>
+          <SelectTrigger className='w-full sm:w-auto bg-card shadow-xs'>
             <SelectValue placeholder='Sort by...' />
           </SelectTrigger>
           <SelectContent>
@@ -96,7 +96,7 @@ const FilterControls = ({
           value={itemsPerPage.toString()}
           onValueChange={value => onItemsPerPageChange(Number(value))}
         >
-          <SelectTrigger className='w-full sm:basis-1/4 md:basis-1/6 xl:basis-1/8 2xl:basis-1/10 3xl:basis-1/12 grow bg-card shadow-xs'>
+          <SelectTrigger className='w-full sm:w-auto bg-card shadow-xs'>
             <SelectValue placeholder='Items per page' />
           </SelectTrigger>
           <SelectContent>
