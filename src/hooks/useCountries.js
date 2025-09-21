@@ -57,16 +57,26 @@ export const useCountries = () => {
 
   useEffect(() => {
     const getAllCountriesData = async () => {
-      try {
-        setError(false);
-        setLoading(true);
-        const data = await fetchAllCountries();
+      const cachedCountries = sessionStorage.getItem("allCountries");
+
+      if (cachedCountries) {
+        const data = JSON.parse(cachedCountries);
         setAllCountries(data);
         setProcessedCountries(data);
-      } catch {
-        setError(true);
-      } finally {
         setLoading(false);
+      } else {
+        try {
+          setError(false);
+          setLoading(true);
+          const data = await fetchAllCountries();
+          sessionStorage.setItem("allCountries", JSON.stringify(data));
+          setAllCountries(data);
+          setProcessedCountries(data);
+        } catch {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
     };
 
