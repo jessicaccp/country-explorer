@@ -1,5 +1,9 @@
 # Country Explorer
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dab157e8-3548-402d-8206-a68da038e2fb/deploy-status)](https://app.netlify.com/projects/country-explorer1/deploys)
+
+**📍 [Live Demo](https://country-explorer1.netlify.app/)**
+
 A responsive front-end application built with React and Vite for exploring, searching, and filtering country data from the REST Countries API.
 
 ## Table of Contents
